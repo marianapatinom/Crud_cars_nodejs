@@ -3,7 +3,7 @@
 let mongoose = require('mongoose');
 let application = require('./application');
  
-mongoose.connect('mongodb://localhost:27017/ejemploweb').then(
+mongoose.connect('mongodb://localhost:27017/crudcars').then(
     () => {
         console.log('Conexion exitosa');
         application.listen(1702);

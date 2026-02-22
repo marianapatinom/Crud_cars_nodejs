@@ -5,7 +5,7 @@ let mongoose = require('mongoose');
 
 let Schema = mongoose.Schema;
 
-let CarroSchema = Schema(
+let CarSchema = Schema(
     {
         marca : String,
         modelo : Number,
@@ -15,5 +15,5 @@ let CarroSchema = Schema(
     }
 );
 
-module.exports = mongoose.model('carros', CarroSchema);
+module.exports = mongoose.model('cars', CarSchema);
 

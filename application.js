@@ -2,10 +2,10 @@
  
 let express = require('express');
 let bodyParser = require('body-parser');
-let routerCarros = require('./routes/carros');
+let routerCars = require('./routers/carRouter');
  
 let application = express();
 application.use(bodyParser.json()); // Transforma el boy a Json automaticamente
-application.use(routerCarros);
+application.use(routerCars);
  
-module.exports = application;use(bodyParser.json()); // tranforma el boy
+module.exports = application;

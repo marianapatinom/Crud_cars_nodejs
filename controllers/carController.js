@@ -1,8 +1,8 @@
 'use strict';
  
-let Carro = require('../models/carros');
+let Carro = require('../models/carModel');
  
-function crearCarro(req, resp){
+function createCar(req, resp){
     let requestBody = req.body;
  
     if(!requestBody){
@@ -14,12 +14,15 @@ function crearCarro(req, resp){
     else if(requestBody.marca.trim() === '' || requestBody.precio <= 0){
         resp.status(400).send({'message': 'invalid values in mandatory fields'});
     }
+    else if(requestBody.precio <= 1000000){
+        resp.status(400).send({'message': 'The car must be worth more than a million.'});
+    }
     else{
         let nuevoCarro = new Carro();
-        nuevoCarro.marca= requestBody.marca;
+        nuevoCarro.marca = requestBody.marca.toLowerCase();
         nuevoCarro.modelo = requestBody.modelo;
         nuevoCarro.precio = requestBody.precio;
-        nuevoCarro.color = requestBody.color;
+        nuevoCarro.color = requestBody.color.toLowerCase();
  
         nuevoCarro.save().then(
             (carroCreado) => {
@@ -32,4 +35,4 @@ function crearCarro(req, resp){
     }
 }
  
-module.exports = {crearCarro};
+module.exports = {createCar};
